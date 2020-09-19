@@ -6,6 +6,8 @@ public class PeopleController {
     private PeopleMode peopleMode;
     private PeopleView peopleView;
 
+    private FootController footController;
+
     public PeopleController(PeopleMode peopleMode, PeopleView peopleView) {
         this.peopleMode = peopleMode;
         this.peopleView = peopleView;

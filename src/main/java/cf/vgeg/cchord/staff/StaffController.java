@@ -13,6 +13,8 @@ public class StaffController {
     }
 
     public void updateView(Graphics g){
+        staffView.draw(g,staffModel.getxPos(),staffModel.getyPos(),staffModel.getHeight(),staffModel.getWidth());
+
         List<LineModel> lineModels = staffModel.getLineModels();
         for (LineModel lineModel : lineModels) {
             new LineController(lineModel,new LineView()).updateView(g);
