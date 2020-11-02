@@ -42,7 +42,7 @@ public class Note {
             NoteType noteType = NoteType.valueOf(String.valueOf(matcher.group("noteType")));
             String accidental = matcher.group("accidental");
             if (accidental != null) {
-                return new Note(noteType, Accidental.get(accidental));
+                return new Note(noteType, Accidental.create(accidental));
             }
             return new Note(noteType, Accidental.NATURAL);
         }

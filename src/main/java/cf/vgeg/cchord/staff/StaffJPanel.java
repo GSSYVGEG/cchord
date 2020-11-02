@@ -1,15 +1,35 @@
 package cf.vgeg.cchord.staff;
 
+import cf.vgeg.cchord.note.EqualNote;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class StaffJPanel extends JPanel {
-    private StaffController staffController;
 
-    public StaffJPanel(int xPos,int yPos,int width,int height) {
+/**
+ * 该类相当于StaffBarController
+ */
+public class StaffJPanel extends JPanel {
+    private StaffBarView staffBarView;
+    private StaffBarModel staffBarModel;
+
+
+    public StaffJPanel(Point bottomLeft,int width,int height) {
         super();
-        StaffModel staffModel = new StaffModel(xPos, yPos, width, height);
-        this.staffController = new StaffController(staffModel,new StaffView());
+        this.staffBarView = new StaffBarView();
+        this.staffBarModel = new StaffBarModel(bottomLeft, width, height);
+    }
+
+    public void addNote(EqualNote equalNote){
+        staffBarModel.addNote(equalNote);
+    }
+    public void addNote(String note){
+        this.addNote(EqualNote.create(note));
+        updateUI();
+    }
+    public void deleteAllNote(){
+        staffBarModel.deleteAll();
+        updateUI();
     }
 
     @Override
@@ -20,6 +40,10 @@ public class StaffJPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        staffController.updateView(g);
+        Graphics2D g2d = (Graphics2D) g;
+        //开启平滑抗锯齿
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        staffBarView.draw(g,staffBarModel);
     }
+
 }

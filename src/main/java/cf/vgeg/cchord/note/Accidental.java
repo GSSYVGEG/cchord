@@ -20,7 +20,7 @@ public enum Accidental {
         return number;
     }
 
-    public static Accidental get(String name) {
+    public static Accidental create(String name) {
         for (Accidental value : Accidental.values()) {
             if (name.isEmpty()) return Accidental.NATURAL;
             if (value.name.equals(name)) {

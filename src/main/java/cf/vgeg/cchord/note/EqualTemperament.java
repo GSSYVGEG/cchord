@@ -8,6 +8,12 @@ import java.util.List;
  * 现代音乐系统使用的音律。
  */
 public class EqualTemperament implements Temperament {
+    /**
+     * 将一个八度范围内的音，平均分为12份
+     * 每份即为一个半音
+     * 记第一个音的频率为x，
+     * 第i个音的频率为 multiple * x
+     */
     private static final List<Double> multiples;
     static {
         multiples = Arrays.asList(

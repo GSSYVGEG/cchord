@@ -34,7 +34,7 @@ public class CommonTest {
 
     @Test
     public void test(){
-
+        System.out.println(Math.sin(Math.toRadians(30)));
 
     }
 }

@@ -34,7 +34,7 @@ public class ChordAlterationFactory {
             if (matcher.group("bracket")!=null){
                 int bracketNumber = Integer.parseInt(matcher.group("bracketNumber"));
                 String bracketAccidentalStr = matcher.group("bracketAccidental");
-                return new bracketChordAlteration(bracketNumber, Accidental.get(bracketAccidentalStr));
+                return new bracketChordAlteration(bracketNumber, Accidental.create(bracketAccidentalStr));
             }
         }
         throw new IllegalArgumentException("输入的ChordAlteration字符串格式不正确："+chordAlterationStr);

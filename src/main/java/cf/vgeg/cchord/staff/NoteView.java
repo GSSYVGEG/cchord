@@ -2,14 +2,26 @@ package cf.vgeg.cchord.staff;
 
 import java.awt.*;
 
-public class NoteView implements View {
-    @Override
+
+public class NoteView {
+    private NoteModel noteModel;
+
+    public NoteView(NoteModel noteModel) {
+        this.noteModel = noteModel;
+    }
+
     public void draw(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        //开启平滑抗锯齿
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        Ellipse2D ellipse = new Ellipse2D.Double(20, 30, 100, 50);
-        g2d.fillOval(0,0,50,30);
-        g2d.translate(10,-10);
+        //TODO:需要重构，这里缺乏扩展性
+        //画四分音符
+        if (noteModel instanceof QuarterNoteModel){
+            QuarterNoteModel quarterNoteModel = (QuarterNoteModel) this.noteModel;
+            //画符头
+            NoteHeadModel noteHeadModel = quarterNoteModel.getNoteHeadModel();
+            new NoteHeadView(noteHeadModel).draw(g);
+            //画符杠
+            new NoteStemView(quarterNoteModel.getNoteStemModel()).draw(g);
+        }
+
+
     }
 }

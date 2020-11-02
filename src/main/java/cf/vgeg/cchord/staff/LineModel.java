@@ -1,22 +1,16 @@
 package cf.vgeg.cchord.staff;
 
 public class LineModel {
-    private int xPos;
-    private int yPos;
+    private Point begin;
     private int length;
 
-    public LineModel(int xPos, int yPos, int length) {
-        this.xPos = xPos;
-        this.yPos = yPos;
+    public LineModel(Point begin, int length) {
+        this.begin = begin;
         this.length = length;
     }
 
-    public int getxPos() {
-        return xPos;
-    }
-
-    public int getyPos() {
-        return yPos;
+    public Point getBegin() {
+        return begin;
     }
 
     public int getLength() {
